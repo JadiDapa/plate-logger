@@ -1,0 +1,32 @@
+# Direct dependencies. requirements.txt is generated from this file (fully pinned):
+#   uv pip compile requirements.in --universal --python-version 3.11 -o requirements.txt
+#
+# torch/torchvision: Streamlit Community Cloud runs Linux, where the PyPI wheels pull ~3 GB of CUDA
+# libraries. Point at the CPU-only wheels instead (exact URLs, so no extra index is needed and every
+# other package still comes from PyPI). PyPI wheels for Windows/macOS are already CPU builds.
+torch @ https://download.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.11"
+torch @ https://download.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
+torch @ https://download.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp313-cp313-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.13"
+torch @ https://download.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.14"
+torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.29.1%2Bcpu-cp311-cp311-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.11"
+torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.29.1%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.12"
+torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.29.1%2Bcpu-cp313-cp313-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.13"
+torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.29.1%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl ; sys_platform == "linux" and python_version == "3.14"
+torch==2.14.1 ; sys_platform != "linux"
+torchvision==0.29.1 ; sys_platform != "linux"
+
+ultralytics==8.4.171
+easyocr==1.7.2
+lap==0.5.13
+numpy==2.4.6
+# ultralytics needs opencv-python, easyocr needs opencv-python-headless. Both install the same `cv2`
+# folder, so pin them to the same version; packages.txt provides libGL in case the GUI build wins.
+opencv-python==5.0.0.93
+opencv-python-headless==5.0.0.93
+
+# web UI (streamlit run app.py)
+streamlit==1.64.0
+streamlit-image-coordinates==0.4.1
+pandas==3.0.6
+altair==6.3.0
+imageio-ffmpeg==0.6.0

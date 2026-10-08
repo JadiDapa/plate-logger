@@ -1,0 +1,25 @@
+# secrets & site-specific config
+.env
+.streamlit/secrets.toml
+
+# outputs & data (runs, snapshots, uploads, databases)
+output/
+*.db
+*.mp4
+*.avi
+*.mov
+# default video for the deployed app
+!vehicle-plate.mp4
+
+# weights: the custom model must be committed
+*.pt
+*.engine
+*.onnx
+!best.pt
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
